@@ -27,6 +27,12 @@ jobs:
       - name: Build with Maven
         run: mvn clean package -DskipTests
 
+      # Debug: Show target folder
+      - name: List target folder
+        run: |
+          echo "Target folder contents:"
+          ls -la target
+
       - name: Upload JAR Artifact
         uses: actions/upload-artifact@v4
         with:
@@ -48,6 +54,14 @@ jobs:
           name: java-app
           path: ./artifact
 
+      # Debug: Show downloaded files
+      - name: List downloaded files
+        run: |
+          echo "Current directory:"
+          pwd
+          echo "Downloaded files:"
+          find . -type f
+
       - name: Login to Azure
         uses: azure/login@v2
         with:
@@ -59,7 +73,7 @@ jobs:
         uses: azure/webapps-deploy@v3
         with:
           app-name: backend-java-webapp
-          package: ./artifact/*.jar
+          package: ./artifact
 
       - name: Logout from Azure
         run: az logout
