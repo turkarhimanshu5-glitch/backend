@@ -54,10 +54,8 @@ jobs:
           subscription-id: ${{ secrets.AZUREAPPSERVICE_SUBSCRIPTIONID_AF860FB8982348DDA5603EF857CFAA78 }}
 
       - name: Deploy to Azure Web App
-        id: deploy-to-webapp
         uses: azure/webapps-deploy@v3
         with:
-          app-name: 'backend-java-webapp'
-          slot-name: 'Production'
-          package: '*.jar'
+         app-name: backend-java-webapp
+         package: '${{ github.workspace }}/target/*.jar'
           
