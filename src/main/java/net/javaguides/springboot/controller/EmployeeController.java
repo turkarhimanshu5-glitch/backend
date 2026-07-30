@@ -18,7 +18,7 @@ import net.javaguides.springboot.repository.EmployeeRepository;
         "https://YOUR-STATIC-WEB-APP.azurestaticapps.net"
 })
 @RestController
-@RequestMapping("/api/v1")
+@RequestMapping("/api/employees")
 public class EmployeeController {
 
     @Autowired
